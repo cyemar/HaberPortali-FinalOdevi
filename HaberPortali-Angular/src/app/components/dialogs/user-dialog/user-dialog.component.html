@@ -1,0 +1,28 @@
+<mat-toolbar color="primary">
+  <span>{{dialogTitle}}</span>
+</mat-toolbar>
+<div class="container">
+  <form [formGroup]="frm">
+    <mat-form-field appearance="outline">
+      <mat-label>User Name</mat-label>
+      <input matInput placeholder="User Name" formControlName="userName" name="userName" required type="text">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>User Mail</mat-label>
+      <input matInput placeholder="user Mail" formControlName="userMail" name="userMail" required type="text">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>User Password</mat-label>
+      <input matInput placeholder="User Password" formControlName="userPw" name="userPw" required type="text">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>User Admin</mat-label>
+      <mat-select formControlName="userAdmin" name="userAdmin" required>
+        <mat-option value="1">Admin</mat-option>
+        <mat-option value="0">User</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+  <button mat-raised-button color="primary" (click)="dialogRef.close(frm.value)" [disabled]="frm.invalid">Save</button> &nbsp;
+  <button mat-raised-button color="warn" (click)="dialogRef.close()">Cancel</button>
+</div>

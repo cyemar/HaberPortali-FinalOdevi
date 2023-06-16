@@ -1,0 +1,39 @@
+<mat-card class="news-container" *ngIf="news">
+  <mat-card-header class="news-title2">
+    <mat-card-title class="news-title">{{ news.newsTitle }}</mat-card-title>
+  </mat-card-header>
+  <div class="news-image-container">
+    <img mat-card-image [src]="news.newsImage" alt="New's Photo" class="news-image">
+  </div>
+  <mat-card-content>
+    <p class="news-content">{{ news.newsContent }}</p>
+    <div class="news-details">
+      <p class="news-date">Tarih: {{ news.newsDateTime | date:'medium' }}</p>
+      <p class="news-author">Yazar: {{(ncb | async) || 'Loading...'}}</p>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<hr>
+
+
+<div class="comments">
+  <h1>Yorumlar</h1>
+  <mat-card class="comment-container" *ngFor="let comment of comments">
+    <mat-card-content>
+      <p>{{ comment.commentContent }}</p>
+      <hr>
+      <p>Gönderen: <b>{{ comment.userName }}</b></p>
+      <p>Zaman: {{ comment.commentTime | date:'medium' }}</p>
+    </mat-card-content>
+    <mat-divider></mat-divider>
+  </mat-card>
+
+  <div class="comment-input-container">
+    <mat-form-field class="com-textarea" appearance="outline">
+      <textarea class="com-textarea" matInput [(ngModel)]="newComment" placeholder="Yorumunuzu buraya girin"></textarea>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="primary" (click)="addComment()">Yorum Ekle</button>
+  </div>
+</div>

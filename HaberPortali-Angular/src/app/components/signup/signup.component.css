@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+
+.center-container {
+  margin-top: -5%;
+}
+
+.login-card {
+  width: 400px;
+  background-color: #f5f5f5;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.form-container {
+  margin-top: 10%;
+}
+
+.login-button {
+  margin-top: 20px;
+}
+
+.mat-form-field {
+  display: block;
+  margin-bottom: 10px;
+}

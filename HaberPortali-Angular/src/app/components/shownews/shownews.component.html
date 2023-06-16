@@ -1,0 +1,40 @@
+<div class="container">
+  <h1>News List</h1>
+  <h3><b>User:</b> {{selUser?.userName}}</h3>
+  <h3><b>User Has:</b> {{selUser?.userNewsCount}} News</h3>
+</div>
+
+<button mat-fab color="primary" matTooltip="User List" [routerLink]="['/user']">
+  <mat-icon aria-label="label">arrow_back</mat-icon>
+</button>
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+  <ng-container matColumnDef="newsTitle" >
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> News Title </th>
+    <td mat-cell *matCellDef="let new"> {{new.newsTitle}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="newsDateTime" >
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> News Date </th>
+    <td mat-cell *matCellDef="let new"> {{new.newsDateTime}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
+    <td mat-cell *matCellDef="let new">
+      <button mat-icon-button color="primary" matToolTip="Edit User" (click)="EditNews(new)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" matToolTip="Delete User" (click)="DeleteNews(new)" >
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+<table>
+
+<mat-paginator [pageSizeOptions]="[5,10,25,50,100]" showFirstLastButtons>
+
+</mat-paginator>

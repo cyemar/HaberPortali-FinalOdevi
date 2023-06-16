@@ -1,0 +1,32 @@
+<mat-toolbar color="primary">
+<div class="logo">
+    <H1>Logo</H1>
+  </div>
+
+  <a mat-button [routerLink]="['/home']" routerLinkActive="active-link">Home</a>
+  <a mat-button [routerLink]="['/sport']" routerLinkActive="active-link">Sport</a>
+  <a mat-button [routerLink]="['/politic']" routerLinkActive="active-link">Politic</a>
+
+  <span class="fill-space"></span>
+  <span class="flex-space"></span>
+
+  <div [matMenuTriggerFor]="adminMenu" *ngIf="ApiService.ifAdminCheck()">
+    <button mat-button>Admin Management</button>
+  </div>
+
+  <mat-menu #adminMenu="matMenu" >
+    <button mat-menu-item [routerLink]="['/user']" routerLinkActive="active-link">User Editing</button>
+    <button mat-menu-item [routerLink]="['/news']" routerLinkActive="active-link">News Editing</button>
+    <button mat-menu-item [routerLink]="['/categories']" routerLinkActive="active-link">Category Editing</button>
+  </mat-menu>
+
+  <ng-container *ngIf="!ApiService.AuthControl(); else loggedInBtn">
+    <button mat-button [routerLink]="['/login']">Login</button>
+  </ng-container>
+
+  <ng-template #loggedInBtn>
+    <button mat-button (click)="ApiService.logOut()">Logout</button>
+  </ng-template>
+
+</mat-toolbar>
+<router-outlet></router-outlet>

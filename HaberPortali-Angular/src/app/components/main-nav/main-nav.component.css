@@ -1,0 +1,15 @@
+.flex-space {
+  flex: 1;
+}
+.deneme{
+  padding-left: 25%;
+  width: 100%;
+}
+a{
+  margin-left: 70px;
+  text-align: center;
+}
+
+mat-toolbar{
+  padding-left: 35%;
+}

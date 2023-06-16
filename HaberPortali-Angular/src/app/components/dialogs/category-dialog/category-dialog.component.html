@@ -1,0 +1,13 @@
+<mat-toolbar color="primary">
+  <span>{{dialogTitle}}</span>
+</mat-toolbar>
+<div class="container">
+  <form [formGroup]="frm">
+    <mat-form-field appearance="outline">
+      <mat-label>Cat Name</mat-label>
+      <input matInput placeholder="Category Name" formControlName="catName" name="catName" required type="text">
+    </mat-form-field>
+  </form>
+  <button mat-raised-button color="primary" (click)="dialogRef.close(frm.value)" [disabled]="frm.invalid">Save</button> &nbsp;
+  <button mat-raised-button color="warn" (click)="dialogRef.close()">Cancel</button>
+</div>

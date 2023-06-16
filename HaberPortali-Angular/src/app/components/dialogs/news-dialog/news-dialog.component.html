@@ -1,0 +1,33 @@
+<mat-toolbar color="primary">
+  <span>{{dialogTitle}}</span>
+</mat-toolbar>
+<div class="container">
+  <form [formGroup]="frm">
+    <mat-form-field appearance="outline">
+      <mat-label>News Title</mat-label>
+      <input matInput placeholder="News Title" formControlName="newsTitle" name="newsTitle" required type="text">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>News Content</mat-label>
+      <input matInput placeholder="News Content" formControlName="newsContent" name="newsContent" required type="text">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>News Image</mat-label>
+      <input matInput placeholder="News Image" formControlName="newsImage" name="newsImage" required type="text">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>News Category</mat-label>
+      <mat-select formControlName="newsCatId" name="newsCatId" required>
+        <mat-option *ngFor="let category of categories" [value]="category.catId">
+          {{ category.catName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>News Created By</mat-label>
+      <input matInput placeholder="newsCreatedBy" formControlName="newsCreatedBy"  name="newsCreatedBy" required type="text">
+    </mat-form-field>
+  </form>
+  <button mat-raised-button color="primary" (click)="dialogRef.close(frm.value)" [disabled]="frm.invalid">Save</button> &nbsp;
+  <button mat-raised-button color="warn" (click)="dialogRef.close()">Cancel</button>
+</div>

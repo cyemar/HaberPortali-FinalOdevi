@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="center-container">
+    <mat-card class="login-card">
+      <mat-card-header>
+        <mat-card-title>Login</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="form-container">
+          <form>
+            <mat-form-field>
+              <input matInput placeholder="Mail" #mail type="email" required>
+            </mat-form-field>
+
+            <mat-form-field>
+              <input matInput placeholder="Password" #password type="password" required>
+            </mat-form-field>
+            <button mat-raised-button color="primary" class="login-button" (click)="UserLogIn(mail.value,password.value)">Login</button>&nbsp;
+            <button mat-raised-button color="warn" [routerLink]="['/signup']">Eğer üye değilseniz üye olmak için tıklayın.</button>
+          </form>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,72 @@
+  <mat-form-field appearance="outline" color="primary">
+    <input matInput placeholder="Type something to search" (keyup)="DoFilter($event)">
+  </mat-form-field>
+
+  <button mat-fab matTooltip="Add News" color="primary" (click)="AddNews()">
+    <mat-icon aria-label="label">add</mat-icon>
+  </button>
+
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Id Column -->
+  <ng-container matColumnDef="newsId" >
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+    <td mat-cell *matCellDef="let new"> {{new.newsId}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="newsTitle" >
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Title </th>
+    <td mat-cell *matCellDef="let new"> {{new.newsTitle}} </td>
+  </ng-container>
+
+  <!-- Mail Column -->
+  <ng-container matColumnDef="newsContent" >
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Content </th>
+    <td mat-cell *matCellDef="let new" class="newsContent"> {{new.newsContent}} </td>
+  </ng-container>
+
+  <!-- Password Column -->
+  <ng-container matColumnDef="newsImage" >
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Image </th>
+    <td mat-cell *matCellDef="let new"> {{new.newsImage}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="newsDateTime" >
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Created Date </th>
+    <td mat-cell *matCellDef="let new"> {{new.newsDateTime}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="newsCreatedBy" >
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Created By </th>
+    <td mat-cell *matCellDef="let new"> {{ getUsername(new.newsCreatedBy) }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="newsCatId" >
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Category </th>
+    <td mat-cell *matCellDef="let new">
+      {{ getCategoryName(new.newsCatId) }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef> Actions </th>
+    <td mat-cell *matCellDef="let new">
+      <button mat-icon-button color="primary" matToolTip="Edit User" (click)="EditNews(new)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" matToolTip="Delete User" (click)="DeleteNews(new)" >
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<mat-paginator [pageSizeOptions]="[5,10,25,50,100]" showFirstLastButtons>
+
+</mat-paginator>

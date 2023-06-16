@@ -1,0 +1,42 @@
+<mat-form-field appearance="outline" color="primary">
+  <input matInput placeholder="Type something to search" (keyup)="DoFilter($event)">
+</mat-form-field>
+
+<button mat-fab matTooltip="Add Categories" color="primary" (click)="AddCat()">
+  <mat-icon aria-label="label">add</mat-icon>
+</button>
+
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+<!--- Note that these columns can be defined in any order.
+      The actual rendered columns are set as a property on the row definition" -->
+
+<!-- Id Column -->
+<ng-container matColumnDef="catId" >
+  <th mat-header-cell *matHeaderCellDef mat-sort-header> Category Id </th>
+  <td mat-cell *matCellDef="let cat"> {{cat.catId}} </td>
+</ng-container>
+
+<ng-container matColumnDef="catName" >
+  <th mat-header-cell *matHeaderCellDef mat-sort-header> Category Name </th>
+  <td mat-cell *matCellDef="let cat"> {{cat.catName}} </td>
+</ng-container>
+
+<ng-container matColumnDef="actions">
+  <th mat-header-cell *matHeaderCellDef> Actions </th>
+  <td mat-cell *matCellDef="let cat">
+    <button mat-icon-button color="primary" matToolTip="Edit User" (click)="EditCat(cat)">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-icon-button color="warn" matToolTip="Delete User" (click)="DeleteCat(cat)" >
+      <mat-icon>delete</mat-icon>
+    </button>
+  </td>
+</ng-container>
+
+<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<mat-paginator [pageSizeOptions]="[5,10,25,50,100]" showFirstLastButtons>
+
+</mat-paginator>

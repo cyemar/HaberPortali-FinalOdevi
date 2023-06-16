@@ -1,0 +1,12 @@
+<div class="cont" *ngIf="news">
+  <mat-card class="news-card" *ngFor="let new of news" (click)="redirectToNewsDetail(new.newsId)">
+    <mat-card-header>
+      <div mat-card-avatar class="news-image" [style.backgroundImage]="'url(' + new.newsImage + ')'"></div>
+      <mat-card-title>{{ new.newsTitle }}</mat-card-title>
+      <mat-card-subtitle>{{ new.newsDateTime | date:'medium' }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p> Shared By {{ getUsername(new.newsCreatedBy) }}</p>
+    </mat-card-content>
+  </mat-card>
+</div>

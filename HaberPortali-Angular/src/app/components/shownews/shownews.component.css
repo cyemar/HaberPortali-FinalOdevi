@@ -1,0 +1,14 @@
+table {
+  width: 100%;
+  margin-top: 20px;
+}
+
+input{
+  color: black;
+}
+
+.no-news-message {
+  margin-top: 16px;
+  text-align: center;
+  font-weight: bold;
+}

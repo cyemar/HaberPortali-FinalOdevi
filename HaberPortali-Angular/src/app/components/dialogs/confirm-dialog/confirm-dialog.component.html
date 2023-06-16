@@ -1,0 +1,9 @@
+<mat-toolbar color="primary" class="mat-elevation-z8">
+    <span></span>
+</mat-toolbar>
+<div class="container">
+    {{dialogMsg}}
+</div>
+<p>&nbsp;</p>
+<button mat-raised-button color="primary" (click)="dialogRef.close(true)">Confirm</button>&nbsp;
+<button mat-raised-button color="warn" (click)="dialogRef.close(false)">Cancel</button>
